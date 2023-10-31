@@ -9,8 +9,17 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        configureNavigationBar()
+    }
+    
+    //MARK: - Private
+    
+    private func configureNavigationBar() {
         
     }
 }
