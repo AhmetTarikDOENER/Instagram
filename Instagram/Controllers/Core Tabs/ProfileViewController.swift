@@ -20,6 +20,12 @@ class ProfileViewController: UIViewController {
     //MARK: - Private
     
     private func configureNavigationBar() {
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettingsButton))
+    }
+    
+    @objc private func didTapSettingsButton() {
+        let vc = SettingsViewController()
+        vc.title = "Settings"
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
