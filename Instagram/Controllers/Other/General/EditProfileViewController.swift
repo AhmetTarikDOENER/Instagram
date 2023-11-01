@@ -17,7 +17,7 @@ final class EditProfileViewController: UIViewController {
 
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(FormTableViewCell.self, forCellReuseIdentifier: FormTableViewCell.cellIdentifier)
         
         return tableView
     }()
@@ -94,7 +94,7 @@ final class EditProfileViewController: UIViewController {
     }
     
     @objc private func didTapSave() {
-        
+        dismiss(animated: true)
     }
     
     @objc private func didTapCancel() {
@@ -140,9 +140,16 @@ extension EditProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section][indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = model.label
+        let cell = tableView.dequeueReusableCell(withIdentifier: FormTableViewCell.cellIdentifier, for: indexPath) as! FormTableViewCell
+        cell.configure(with: model)
+        cell.delegate = self
         return cell
     }
+}
+
+extension EditProfileViewController: FormTableViewCellDelegate {
     
+    func formTableViewCell(_ cell: FormTableViewCell, didUpdateField updatedModel: EditProfileFormModel) {
+        
+    }
 }
