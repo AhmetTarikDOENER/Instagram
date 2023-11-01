@@ -12,6 +12,10 @@
 		453A4CE22AF0382500B6D6D8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A4CE12AF0382500B6D6D8 /* AuthManager.swift */; };
 		453A4CE42AF0387100B6D6D8 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A4CE32AF0387100B6D6D8 /* StorageManager.swift */; };
 		453A4CE62AF03DB200B6D6D8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A4CE52AF03DB200B6D6D8 /* UIView+Extension.swift */; };
+		4542929B2AF2A31E00617A30 /* FeedPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542929A2AF2A31E00617A30 /* FeedPostTableViewCell.swift */; };
+		4542929D2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542929C2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift */; };
+		4542929F2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542929E2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift */; };
+		454292A22AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454292A12AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift */; };
 		454B1A572AF13DDE00A556BA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B1A562AF13DDE00A556BA /* String+Extension.swift */; };
 		45B9F8392AEFE6970071EC92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B9F8382AEFE6970071EC92 /* AppDelegate.swift */; };
 		45B9F83B2AEFE6970071EC92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B9F83A2AEFE6970071EC92 /* SceneDelegate.swift */; };
@@ -68,6 +72,10 @@
 		453A4CE12AF0382500B6D6D8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		453A4CE32AF0387100B6D6D8 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		453A4CE52AF03DB200B6D6D8 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		4542929A2AF2A31E00617A30 /* FeedPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostTableViewCell.swift; sourceTree = "<group>"; };
+		4542929C2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		4542929E2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostActionsTableViewCell.swift; sourceTree = "<group>"; };
+		454292A12AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostGeneralTableViewCell.swift; sourceTree = "<group>"; };
 		454B1A562AF13DDE00A556BA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		45B9F8352AEFE6970071EC92 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45B9F8382AEFE6970071EC92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +165,25 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		454292992AF2A30200617A30 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				454292A02AF2A55E00617A30 /* Home Feed */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		454292A02AF2A55E00617A30 /* Home Feed */ = {
+			isa = PBXGroup;
+			children = (
+				4542929A2AF2A31E00617A30 /* FeedPostTableViewCell.swift */,
+				4542929C2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift */,
+				4542929E2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift */,
+				454292A12AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift */,
+			);
+			path = "Home Feed";
+			sourceTree = "<group>";
+		};
 		45B9F82C2AEFE6970071EC92 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +226,7 @@
 		45B9F84D2AEFE8AF0071EC92 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				454292992AF2A30200617A30 /* Cells */,
 				45B9F8502AEFE8EC0071EC92 /* Storyboards */,
 				45B9F8412AEFE6980071EC92 /* Assets.xcassets */,
 			);
@@ -371,8 +399,11 @@
 				45E6CBB12AEFE9A300F6EEF3 /* ExploreViewController.swift in Sources */,
 				45E6CBCE2AEFEB1700F6EEF3 /* PublishPostViewController.swift in Sources */,
 				45E6CBB32AEFE9B800F6EEF3 /* CameraViewController.swift in Sources */,
+				454292A22AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift in Sources */,
 				45B9F83D2AEFE6970071EC92 /* HomeViewController.swift in Sources */,
+				4542929F2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift in Sources */,
 				45E6CBBE2AEFEA4800F6EEF3 /* RegistrationViewController.swift in Sources */,
+				4542929B2AF2A31E00617A30 /* FeedPostTableViewCell.swift in Sources */,
 				45E6CBCC2AEFEB0800F6EEF3 /* PostEditorViewController.swift in Sources */,
 				453A4CE42AF0387100B6D6D8 /* StorageManager.swift in Sources */,
 				45E6CBC02AEFEA8100F6EEF3 /* PostViewController.swift in Sources */,
@@ -380,6 +411,7 @@
 				45E6CBB52AEFE9CF00F6EEF3 /* NotificationsViewController.swift in Sources */,
 				45E6CBCA2AEFEAF300F6EEF3 /* SearchResultViewController.swift in Sources */,
 				454B1A572AF13DDE00A556BA /* String+Extension.swift in Sources */,
+				4542929D2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift in Sources */,
 				45E6CBBC2AEFEA3E00F6EEF3 /* LoginViewController.swift in Sources */,
 				45E6CBC82AEFEADB00F6EEF3 /* SearchViewController.swift in Sources */,
 				45E6CBB72AEFE9E100F6EEF3 /* ProfileViewController.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 struct SettingsCellModel {
     let title: String
@@ -47,14 +48,81 @@ final class SettingsViewController: UIViewController {
     }
     
     private func configureModels() {
-        let section = [
+        data.append([
+            SettingsCellModel(title: "Edit Profile") {
+                [weak self] in
+                self?.didTapEditProfile()
+            },
+            SettingsCellModel(title: "Invite Friends") {
+                [weak self] in
+                self?.didTapInviteFriends()
+            },
+            SettingsCellModel(title: "Save Original Post") {
+                [weak self] in
+                self?.didTapSaveOriginalPosts()
+            }
+        ])
+        
+        data.append([
+            SettingsCellModel(title: "Terms of Service") {
+                [weak self] in
+                self?.openURL(type: .terms)
+            },
+            SettingsCellModel(title: "Privacy Policy") {
+                [weak self] in
+                self?.openURL(type: .privacy)
+            },
+            SettingsCellModel(title: "Help / Feedback") {
+                [weak self] in
+                self?.openURL(type: .help)
+            }
+        ])
+        data.append([
             SettingsCellModel(title: "Log Out") {
                 [weak self] in
                 self?.didTapLogOut()
             }
-        ]
-        data.append(section)
+        ])
     }
+    
+    @objc private func didTapEditProfile() {
+        let vc = EditProfileViewController()
+        vc.title = "Edit Profile"
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
+    }
+    
+    @objc private func didTapInviteFriends() {
+        
+    }
+    
+    @objc private func didTapSaveOriginalPosts() {
+        
+    }
+    
+    enum SettingsURLType {
+        case terms, privacy, help
+    }
+    
+    private func openURL(type: SettingsURLType) {
+        let urlString: String
+        switch type {
+        case .terms:
+            return urlString = "https://help.instagram.com/581066165581870"
+        case .privacy:
+            return urlString = "https://help.instagram.com/196883487377501"
+        case .help:
+            return urlString = "https://help.instagram.com/"
+        }
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let vc = SFSafariViewController(url: url)
+        present(vc, animated: true)
+    }
+    
     
     @objc private func didTapLogOut() {
         let actionSheet = UIAlertController(title: "Log Out", message: "Are you sure you want to log out?", preferredStyle: .actionSheet)
@@ -85,7 +153,7 @@ final class SettingsViewController: UIViewController {
         actionSheet.popoverPresentationController?.sourceRect = tableView.bounds
         present(actionSheet, animated: true)
     }
-    
+   
 }
 
 //MARK: - UITableView Delegate & DataSource
@@ -103,6 +171,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.section][indexPath.row].title
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
