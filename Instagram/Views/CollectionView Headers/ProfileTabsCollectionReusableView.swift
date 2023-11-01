@@ -11,4 +11,12 @@ class ProfileTabsCollectionReusableView: UICollectionReusableView {
     
     static let cellIdentifier = "ProfileTabsCollectionReusableView"
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .orange
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
 }
