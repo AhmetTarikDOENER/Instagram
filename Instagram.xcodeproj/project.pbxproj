@@ -16,6 +16,7 @@
 		4542929D2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542929C2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift */; };
 		4542929F2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542929E2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift */; };
 		454292A22AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454292A12AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift */; };
+		454292A52AF2BE5600617A30 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454292A42AF2BE5600617A30 /* FormTableViewCell.swift */; };
 		454B1A572AF13DDE00A556BA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B1A562AF13DDE00A556BA /* String+Extension.swift */; };
 		45B9F8392AEFE6970071EC92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B9F8382AEFE6970071EC92 /* AppDelegate.swift */; };
 		45B9F83B2AEFE6970071EC92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B9F83A2AEFE6970071EC92 /* SceneDelegate.swift */; };
@@ -76,6 +77,7 @@
 		4542929C2AF2A4D000617A30 /* FeedPostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		4542929E2AF2A52300617A30 /* FeedPostActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostActionsTableViewCell.swift; sourceTree = "<group>"; };
 		454292A12AF2A58600617A30 /* FeedPostGeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostGeneralTableViewCell.swift; sourceTree = "<group>"; };
+		454292A42AF2BE5600617A30 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
 		454B1A562AF13DDE00A556BA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		45B9F8352AEFE6970071EC92 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45B9F8382AEFE6970071EC92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				454292A02AF2A55E00617A30 /* Home Feed */,
+				454292A42AF2BE5600617A30 /* FormTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				45E6CBBE2AEFEA4800F6EEF3 /* RegistrationViewController.swift in Sources */,
 				4542929B2AF2A31E00617A30 /* FeedPostTableViewCell.swift in Sources */,
 				45E6CBCC2AEFEB0800F6EEF3 /* PostEditorViewController.swift in Sources */,
+				454292A52AF2BE5600617A30 /* FormTableViewCell.swift in Sources */,
 				453A4CE42AF0387100B6D6D8 /* StorageManager.swift in Sources */,
 				45E6CBC02AEFEA8100F6EEF3 /* PostViewController.swift in Sources */,
 				453A4CE02AF0378500B6D6D8 /* DatabaseManager.swift in Sources */,

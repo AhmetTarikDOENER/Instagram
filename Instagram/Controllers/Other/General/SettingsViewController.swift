@@ -77,6 +77,7 @@ final class SettingsViewController: UIViewController {
                 self?.openURL(type: .help)
             }
         ])
+        
         data.append([
             SettingsCellModel(title: "Log Out") {
                 [weak self] in
