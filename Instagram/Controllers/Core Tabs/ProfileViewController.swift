@@ -18,8 +18,8 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureNavigationBar()
-        setCollectionViewDelegateDatasource()
         configureCollectionView()
+        setCollectionViewDelegateDatasource()
     }
     
     override func viewDidLayoutSubviews() {
@@ -28,23 +28,39 @@ final class ProfileViewController: UIViewController {
     }
     
     //MARK: - Private
+    
+    private func setCollectionViewDelegateDatasource() {
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+    }
     private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: view.width / 3, height: view.width / 3)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView?.backgroundColor = .red
         
+        // Cell
+        collectionView?.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.cellIdentifier)
+        
+        // Headers
+        collectionView?.register(
+            ProfileInfoHeaderCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: ProfileInfoHeaderCollectionReusableView.cellIdentifier
+        )
+        collectionView?.register(
+            ProfileTabsCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: ProfileTabsCollectionReusableView.cellIdentifier
+        )
+
         guard let collectionView = collectionView else {
             return
         }
         
         view.addSubview(collectionView)
-    }
-    
-    private func setCollectionViewDelegateDatasource() {
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
     }
     
     private func configureNavigationBar() {
@@ -62,11 +78,13 @@ final class ProfileViewController: UIViewController {
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        cell.backgroundColor = .blue
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
