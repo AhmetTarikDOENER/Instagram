@@ -28,8 +28,9 @@ struct UserCount {
     let post: Int
 }
 
-public enum UserPostType {
-    case photo, video
+public enum UserPostType: String {
+    case photo = "Photo"
+    case video = "Video"
 }
 
 /// Represent a user post
@@ -43,6 +44,7 @@ public struct UserPost {
     let comments: [PostComments]
     let createdDate: Date
     let taggedUsers: [String]
+    let owner: User
 }
 
 struct PostLike {
