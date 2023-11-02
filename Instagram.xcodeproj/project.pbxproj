@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4500840A2AF3E92A002AEBEF /* UserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450084092AF3E92A002AEBEF /* UserFollowTableViewCell.swift */; };
+		4500840C2AF4023C002AEBEF /* NoNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500840B2AF4023C002AEBEF /* NoNotificationsView.swift */; };
+		4500840F2AF406D4002AEBEF /* NotificationFollowEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500840E2AF406D4002AEBEF /* NotificationFollowEventTableViewCell.swift */; };
+		450084112AF406DF002AEBEF /* NotificationLikeEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450084102AF406DF002AEBEF /* NotificationLikeEventTableViewCell.swift */; };
 		453A4CDC2AF033B900B6D6D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 453A4CDB2AF033B900B6D6D8 /* GoogleService-Info.plist */; };
 		453A4CE02AF0378500B6D6D8 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A4CDF2AF0378500B6D6D8 /* DatabaseManager.swift */; };
 		453A4CE22AF0382500B6D6D8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A4CE12AF0382500B6D6D8 /* AuthManager.swift */; };
@@ -76,6 +79,9 @@
 
 /* Begin PBXFileReference section */
 		450084092AF3E92A002AEBEF /* UserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowTableViewCell.swift; sourceTree = "<group>"; };
+		4500840B2AF4023C002AEBEF /* NoNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNotificationsView.swift; sourceTree = "<group>"; };
+		4500840E2AF406D4002AEBEF /* NotificationFollowEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFollowEventTableViewCell.swift; sourceTree = "<group>"; };
+		450084102AF406DF002AEBEF /* NotificationLikeEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLikeEventTableViewCell.swift; sourceTree = "<group>"; };
 		453A4CDB2AF033B900B6D6D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		453A4CDF2AF0378500B6D6D8 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		453A4CE12AF0382500B6D6D8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -156,6 +162,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4500840D2AF406BA002AEBEF /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				4500840E2AF406D4002AEBEF /* NotificationFollowEventTableViewCell.swift */,
+				450084102AF406DF002AEBEF /* NotificationLikeEventTableViewCell.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		453A4CDD2AF0364D00B6D6D8 /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +199,7 @@
 		454292992AF2A30200617A30 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4500840D2AF406BA002AEBEF /* Notifications */,
 				454292A02AF2A55E00617A30 /* Home Feed */,
 				454292A42AF2BE5600617A30 /* FormTableViewCell.swift */,
 				454292A72AF2C74300617A30 /* PhotoCollectionViewCell.swift */,
@@ -258,6 +274,7 @@
 				454292992AF2A30200617A30 /* Cells */,
 				45B9F8502AEFE8EC0071EC92 /* Storyboards */,
 				45B9F8412AEFE6980071EC92 /* Assets.xcassets */,
+				4500840B2AF4023C002AEBEF /* NoNotificationsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -439,8 +456,11 @@
 				4542929B2AF2A31E00617A30 /* FeedPostTableViewCell.swift in Sources */,
 				45E6CBCC2AEFEB0800F6EEF3 /* PostEditorViewController.swift in Sources */,
 				454292A52AF2BE5600617A30 /* FormTableViewCell.swift in Sources */,
+				4500840C2AF4023C002AEBEF /* NoNotificationsView.swift in Sources */,
 				453A4CE42AF0387100B6D6D8 /* StorageManager.swift in Sources */,
 				45E6CBC02AEFEA8100F6EEF3 /* PostViewController.swift in Sources */,
+				450084112AF406DF002AEBEF /* NotificationLikeEventTableViewCell.swift in Sources */,
+				4500840F2AF406D4002AEBEF /* NotificationFollowEventTableViewCell.swift in Sources */,
 				4500840A2AF3E92A002AEBEF /* UserFollowTableViewCell.swift in Sources */,
 				453A4CE02AF0378500B6D6D8 /* DatabaseManager.swift in Sources */,
 				45E6CBB52AEFE9CF00F6EEF3 /* NotificationsViewController.swift in Sources */,

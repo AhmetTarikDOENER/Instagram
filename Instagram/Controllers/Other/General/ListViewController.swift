@@ -84,8 +84,10 @@ extension ListViewController: UserFollowTableViewCellDelegate {
         switch model.type {
         case .following:
             // perform firebase update to unfollow
+            break
         case .not_following:
             // perform firebase update to unfollow
+            break
         }
     }
 }
