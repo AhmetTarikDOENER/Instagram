@@ -8,7 +8,17 @@
 import UIKit
 
 protocol UserFollowTableViewCellDelegate: AnyObject {
-    func didTapFollowUnfollowButton(model: String)
+    func didTapFollowUnfollowButton(model: UserRelationship)
+}
+
+enum UserFollowState {
+    case following, not_following
+}
+
+struct UserRelationship {
+    let username: String
+    let name: String
+    let type: UserFollowState
 }
 
 class UserFollowTableViewCell: UITableViewCell {
@@ -17,8 +27,12 @@ class UserFollowTableViewCell: UITableViewCell {
     
     weak var delegate: UserFollowTableViewCellDelegate?
     
+    private var model: UserRelationship?
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.masksToBounds = true // For circular image view
+        imageView.backgroundColor = .secondarySystemBackground
         imageView.contentMode = .scaleAspectFill
         
         return imageView
@@ -28,6 +42,7 @@ class UserFollowTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.text = "Joe"
         
         return label
     }()
@@ -36,12 +51,15 @@ class UserFollowTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.text = "@joe"
+        label.textColor = .secondaryLabel
         
         return label
     }()
     
     private let followButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .link
         
         return button
     }()
@@ -53,6 +71,8 @@ class UserFollowTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.clipsToBounds = true
         contentView.addSubviews(nameLabel, usernameLabel, followButton, profileImageView)
+        followButton.addTarget(self, action: #selector(didTapFollowButton), for: .touchUpInside)
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {
@@ -72,12 +92,63 @@ class UserFollowTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        profileImageView.frame = CGRect(
+            x: 3,
+            y: 3,
+            width: contentView.height - 6,
+            height: contentView.height - 6
+        )
+        profileImageView.layer.cornerRadius = profileImageView.height / 2
+        
+        let buttonWidth = contentView.width > 500 ? 220 : contentView.width / 3
+        followButton.frame = CGRect(
+            x: contentView.width - 5 - buttonWidth,
+            y: (contentView.height - 40) / 2,
+            width: buttonWidth,
+            height: 40
+        )
+        
+        let labelHeight = contentView.height / 2
+        nameLabel.frame = CGRect(
+            x: profileImageView.right + 5,
+            y: 0,
+            width: contentView.width - 8 - profileImageView.width - buttonWidth,
+            height: labelHeight
+        )
+        usernameLabel.frame = CGRect(
+            x: profileImageView.right + 5,
+            y: nameLabel.bottom,
+            width: contentView.width - 8 - profileImageView.width - buttonWidth,
+            height: labelHeight
+        )
     }
     
     //MARK: - Private
     
-    public func configure(with model: String) {
-        
+    @objc private func didTapFollowButton() {
+        guard let model = model else { return }
+        delegate?.didTapFollowUnfollowButton(model: model)
+    }
+    
+    public func configure(with model: UserRelationship) {
+        self.model = model
+        nameLabel.text = model.name
+        usernameLabel.text = model.username
+        switch model.type {
+        case .following:
+            followButton.setTitle("Unfollow", for: .normal)
+            followButton.setTitleColor(.label, for: .normal)
+            followButton.backgroundColor = .systemBackground
+            followButton.layer.cornerRadius = 5
+            followButton.layer.borderWidth = 1
+            followButton.layer.borderColor = UIColor.label.cgColor
+        case .not_following:
+            followButton.setTitle("Follow", for: .normal)
+            followButton.setTitleColor(.white, for: .normal)
+            followButton.layer.cornerRadius = 5
+            followButton.backgroundColor = .link
+            followButton.layer.borderWidth = 0
+        }
     }
     
 }
