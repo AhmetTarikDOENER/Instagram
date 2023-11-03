@@ -36,6 +36,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(tableView)
+        setTableViewDelegateDatasource()
         createMockModels()
     }
 
@@ -66,7 +67,7 @@ class HomeViewController: UIViewController {
     
     private func createMockModels() {
         let user = User(
-            username: "Joe",
+            username: "@elonmusk",
             bio: "",
             name: (first: "", last: ""),
             birthDate: Date(),
@@ -91,7 +92,7 @@ class HomeViewController: UIViewController {
         
         var comments = [PostComments]()
         for x in 0..<2 {
-            comments.append(PostComments(identifier: "\(x)", username: "@jenny", text: "this is the best post i have seen", createdDate: Date(), likes: []))
+            comments.append(PostComments(identifier: "\(x)", username: "@jenny", text: "This is the best post i have ever seen", createdDate: Date(), likes: []))
         }
         for x in 0..<5 {
             let viewModel = HomeFeedRenderViewModel(
@@ -162,6 +163,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             switch model.header.renderType {
             case .header(let user):
                 let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostHeaderTableViewCell.cellIdentifier, for: indexPath) as! FeedPostHeaderTableViewCell
+                cell.configure(with: user)
+                cell.delegate = self
                 return cell
             case .comments, .actions, .primaryContent:
                 return UITableViewCell()
@@ -172,6 +175,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             switch model.post.renderType {
             case .primaryContent(let post):
                 let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostTableViewCell.cellIdentifier, for: indexPath) as! FeedPostTableViewCell
+                cell.configure(with: post)
                 return cell
             case .comments, .actions, .header:
                 return UITableViewCell()
@@ -181,6 +185,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             switch model.actions.renderType {
             case .actions(let provider):
                 let cell = tableView.dequeueReusableCell(withIdentifier: FeedPostActionsTableViewCell.cellIdentifier, for: indexPath) as! FeedPostActionsTableViewCell
+                cell.delegate = self
                 return cell
             case .comments, .header, .primaryContent:
                 return UITableViewCell()
@@ -228,4 +233,41 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let subSection = section % 4
         return subSection == 3 ? 70 : 0
     }
+}
+
+extension HomeViewController: FeedPostHeaderTableViewCellDelegate {
+   
+    func didTapMoreButton() {
+        let actionSheet = UIAlertController(title: "Post Options", message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Report Post", style: .destructive, handler: {
+            [weak self] _ in
+            self?.reportPost()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        
+        present(actionSheet, animated: true)
+    }
+    
+    func reportPost() {
+        
+    }
+    
+}
+
+extension HomeViewController: FeedPostActionsTableViewCellDelegate {
+    
+    func didTapLikeButton() {
+        print("Tapped.")
+    }
+    
+    func didTapCommentButton() {
+        print("Tapped Comment Button.")
+    }
+    
+    func didTapSendButton() {
+        print("Tapped.")
+    }
+    
+    
 }
