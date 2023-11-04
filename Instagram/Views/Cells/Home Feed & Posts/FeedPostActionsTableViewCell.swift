@@ -21,7 +21,9 @@ class FeedPostActionsTableViewCell: UITableViewCell {
     
     private let likeButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .thin)
+        let image = UIImage(systemName: "heart", withConfiguration: config)
+        button.setImage(image, for: .normal)
         button.tintColor = .label
         
         return button
@@ -29,7 +31,9 @@ class FeedPostActionsTableViewCell: UITableViewCell {
     
     private let commentButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "message"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .thin)
+        let image = UIImage(systemName: "message", withConfiguration: config)
+        button.setImage(image, for: .normal)
         button.tintColor = .label
         
         return button
@@ -37,7 +41,9 @@ class FeedPostActionsTableViewCell: UITableViewCell {
     
     private let sendButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "paperplane"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .thin)
+        let image = UIImage(systemName: "paperplane", withConfiguration: config)
+        button.setImage(image, for: .normal)
         button.tintColor = .label
         
         return button
