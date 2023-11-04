@@ -20,6 +20,15 @@ class ExploreViewController: UIViewController {
     private var models = [UserPost]()
     private var collectionView: UICollectionView?
     
+    private let dimmedView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.isHidden = true
+        view.alpha = 0
+        
+        return view
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -29,14 +38,24 @@ class ExploreViewController: UIViewController {
         configureCollectionView()
         setCollectionViewDelegateDatasource()
         searchBar.delegate = self
+        view.addSubview(dimmedView)
+        setGesture()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView?.frame = view.bounds
+        dimmedView.frame = view.bounds
     }
     
     //MARK: - Private
+    
+    private func setGesture() {
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(didCancelSearch))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        dimmedView.addGestureRecognizer(gesture)
+    }
     
     private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -127,12 +146,24 @@ extension ExploreViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didCancelSearch))
+        dimmedView.isHidden = false
+        UIView.animate(withDuration: 0.2) {
+            self.dimmedView.alpha = 0.4
+        }
     }
     
     
     @objc func didCancelSearch() {
         searchBar.resignFirstResponder()
         navigationItem.rightBarButtonItem = nil
+        UIView.animate(withDuration: 0.2, animations: {
+            self.dimmedView.alpha = 0
+        }) {
+            done in
+            if done {
+                self.dimmedView.isHidden = true
+            }
+        }
     }
     
     private func query(_ text: String) {
